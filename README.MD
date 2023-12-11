@@ -27,7 +27,7 @@ pip install -r requirements.txt
 ## Usage
 
 ```bash
-python whatsapp_patcher/main.py -p ./WhatsApp.apk -o PatchedWhatsApp.apk
+python main.py -p ./WhatsApp.apk --ab-tests
 ```
 
 ## Contributing

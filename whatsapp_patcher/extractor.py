@@ -5,6 +5,8 @@ import os
 from termcolor import cprint
 import zipfile
 
+apktool_file_name = "apktool_2.9.1.jar"
+uber_signer_file_name = "uber-apk-signer-1.3.0.jar"
 
 class Extractor:
     def __init__(self, path: str, output_path: str, temp_path: str = "./extracted"):
@@ -16,7 +18,7 @@ class Extractor:
         if os.path.exists(self.temp_path):
             shutil.rmtree(self.temp_path)
         apktool_base_path = pathlib.Path(__file__).parent.parent / "bin"
-        apk_tool = apktool_base_path / "apktool_2.7.0.jar"
+        apk_tool = apktool_base_path / apktool_file_name
         cprint("[+] Running apktool to decompile the apk.", "green")
         subprocess.check_call(
             [
@@ -45,7 +47,7 @@ class Extractor:
         if os.path.exists(self.output_path):
             os.remove(self.output_path)
         apktool_base_path = pathlib.Path(__file__).parent.parent / "bin"
-        apk_tool = apktool_base_path / "apktool_2.7.0.jar"
+        apk_tool = apktool_base_path / apktool_file_name
         command = [
             "java",
             "-jar",
@@ -64,7 +66,7 @@ class Extractor:
 
     def sign_apk(self):
         uber_signer = (
-            pathlib.Path(__file__).parent.parent / "bin" / "uber-apk-signer-1.2.1.jar"
+            pathlib.Path(__file__).parent.parent / "bin" / uber_signer_file_name
         )
         command = [
             "java",
