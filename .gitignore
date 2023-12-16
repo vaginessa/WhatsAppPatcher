@@ -4,6 +4,7 @@
 /venv/
 **/__pycache__/
 **.apk
+**.idsig
 /.idea
 **.cache
 **.js
